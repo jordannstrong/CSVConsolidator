@@ -49,10 +49,11 @@ public class Keystroke {
 			robot.keyPress(KeyEvent.VK_DOWN);
 			robot.keyRelease(KeyEvent.VK_DOWN);
 			
-			robot.keyPress(KeyEvent.VK_SHIFT);
+			robot.keyPress(KeyEvent.VK_SPACE);
+			robot.keyRelease(KeyEvent.VK_SPACE);
+			
 			robot.keyPress(KeyEvent.VK_UP);
 			robot.keyRelease(KeyEvent.VK_UP);
-			robot.keyRelease(KeyEvent.VK_SHIFT);
 			
 			robot.keyPress(KeyEvent.VK_SPACE);
 			robot.keyRelease(KeyEvent.VK_SPACE);
