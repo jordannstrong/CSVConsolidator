@@ -74,6 +74,11 @@ public class Keystroke {
 			Thread.sleep(4000);
 			
 			robot.keyPress(KeyEvent.VK_ALT);
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_ALT);
+			
+			robot.keyPress(KeyEvent.VK_ALT);
 			robot.keyRelease(KeyEvent.VK_ALT);
 			
 			robot.keyPress(KeyEvent.VK_F);
