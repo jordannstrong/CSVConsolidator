@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 
 import consolidator.Consolidator;
 import keystroke.Keystroke;
+import net.lingala.zip4j.exception.ZipException;
+import renameandorganize.*;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
@@ -18,12 +20,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
 
 public class Main {
 
@@ -175,6 +179,23 @@ public class Main {
 		panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		JButton btnNewButton_3 = new JButton("New button");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Unzip unzip = new Unzip();
+				Rename rename = new Rename();
+				try {
+					unzip.unzip(orders);
+					rename.rename(orders);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ZipException e1) {
+					//TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
 		gbc_btnNewButton_3.gridx = 8;
 		gbc_btnNewButton_3.gridy = 7;

@@ -4,51 +4,53 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+
+import main.Order;
 
 public class Rename {
-	public Rename() throws IOException {
+
+	public Rename() {
+
+	}
+
+	public void rename(HashMap<String, Order> orderMap) throws IOException {
 		File f = new File("."); // current directory
-	
-		FileFilter directoryFilter = new FileFilter() {
-			public boolean accept(File file) {
-				return file.isDirectory();
-			}
-		};
-	
-		File[] files = f.listFiles(directoryFilter);
-		for(int i = 0; i < files.length; i++) {
-			if(i == 0) {
-				
-			} else if (files[i].isDirectory()) {
-				File path = files[i];
-				
-				File[] matches = path.listFiles(new FilenameFilter()
-				{
-				  public boolean accept(File dir, String name)
-				  {
-				     return name.endsWith("00L.txt");
-				  }
-				});
-				
-				File file = matches[0];
 
-				File file2 = new File(matches[0].toString().substring(0, 9) + ".txt");
-				
-				
-				// TODO: Add move to network folder
-				//File file3 = new File()
+		for(String key : orderMap.keySet()) {
+			String path = ".\\" + key;
+			
+			File workingDir = new File(path);
 
-				if (file2.exists())
-				   throw new java.io.IOException("file exists");
-
-				boolean success = file.renameTo(file2);
-				//file2.renameTo();
-
-				if (!success) {
-				} else {
-					file.delete();
+			File[] matches = workingDir.listFiles(new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.endsWith("00L.txt");
 				}
+			});
+
+			File file = matches[0];
+
+			File file2 = new File(".\\" + key + "\\" + key + ".txt");
+			File file3 = new File(".\\" + key + ".txt");
+			
+			
+			// File file3 = new File(new URI("file:\\\\172.21.8.70\\ios\\gs\\" +
+			// matches[0].toString().substring(0, 9) + ".txt"));
+
+			// TODO: Add move to network folder
+			// File file3 = new File()
+
+			boolean success = file.renameTo(file2);
+			boolean success2 = file.renameTo(file3);
+			file.delete();
+			// file2.renameTo(file3);
+
+			if (!success) {
 			} else {
+				file.delete();
 			}
 			System.out.println();
 		}
