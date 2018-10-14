@@ -6,6 +6,9 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+
+import AutoC.Order;
 
 public class Keystroke {
 	
@@ -15,11 +18,11 @@ public class Keystroke {
 		
 	}
 	
-	public void sendKeystrokes(String num) throws InterruptedException {
+	public void sendKeystrokes(HashMap<String, Order> orders) throws InterruptedException {
 		try {
 			Toolkit tool = Toolkit.getDefaultToolkit();
 	        Clipboard clip = tool.getSystemClipboard();
-	        clip.setContents(new StringSelection(num), null);
+	        clip.setContents(new StringSelection(orders), null);
 
 			robot = new Robot();
 			robot.setAutoDelay(1000);

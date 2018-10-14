@@ -18,7 +18,9 @@ public class Consolidator {
 		final String outputName = "output.csv";
 		
 		File file = new File(outputName);
+		File file2 = new File("output.xls");
 		file.delete();
+		file2.delete();
 		
 		File directory = new File(".");
 		File[] files = directory.listFiles(new FilenameFilter() {
