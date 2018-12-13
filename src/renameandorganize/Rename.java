@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import main.Order;
@@ -17,11 +18,11 @@ public class Rename {
 
 	}
 
-	public void rename(HashMap<String, Order> orderMap) throws IOException {
+	public void rename(ArrayList<String> orders) throws IOException {
 		File f = new File("."); // current directory
 
-		for(String key : orderMap.keySet()) {
-			String path = ".\\" + key;
+		for(String s : orders) {
+			String path = ".\\" + s;
 			
 			File workingDir = new File(path);
 
@@ -33,8 +34,8 @@ public class Rename {
 
 			File file = matches[0];
 
-			File file2 = new File(".\\" + key + "\\" + key + ".txt");
-			File file3 = new File(".\\" + key + ".txt");
+			File file2 = new File(".\\" + s + "\\" + s + ".txt");
+			File file3 = new File(".\\" + s + ".txt");
 			
 			
 			// File file3 = new File(new URI("file:\\\\172.21.8.70\\ios\\gs\\" +
