@@ -192,6 +192,7 @@ public class Main {
 		gbc_btnDelete.gridx = 9;
 		gbc_btnDelete.gridy = 1;
 		panel.add(btnDelete, gbc_btnDelete);
+		btnDelete.addActionListener(deleteButton);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
