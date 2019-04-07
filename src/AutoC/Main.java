@@ -120,6 +120,44 @@ public class Main {
 		    } 
 		};
 		
+		Action deleteButton = new AbstractAction()
+		{
+		    @Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+		    	
+		    	AutoC.Delete key = new AutoC.Delete();
+		    	try {
+		    		try {
+		    			BufferedReader in = new BufferedReader(new FileReader(new File("orders.txt")));
+		    			
+		    			for(String s; (s = in.readLine()) != null; ) {
+		    				orders.add(s);
+		    				System.out.println(s);
+		    			}
+		    			
+		    			for(String s : orders) {
+		    				System.out.println(s);
+		    			}
+		    			
+		    			in.close();
+		    			key.deleteOrders(orders);
+		    		} catch (FileNotFoundException e2) {
+		    			// TODO Auto-generated catch block
+		    			e2.printStackTrace();
+		    		} catch (IOException e1) {
+		    			// TODO Auto-generated catch block
+		    			e1.printStackTrace();
+		    		}
+		    		
+		    	
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		    } 
+		};
+		
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 8;
@@ -147,6 +185,13 @@ public class Main {
 		panel.add(btnNewButton, gbc_btnNewButton);
 		
 		btnNewButton.addActionListener(startButton);
+		
+		JButton btnDelete = new JButton("Delete");
+		GridBagConstraints gbc_btnDelete = new GridBagConstraints();
+		gbc_btnDelete.insets = new Insets(0, 0, 5, 0);
+		gbc_btnDelete.gridx = 9;
+		gbc_btnDelete.gridy = 1;
+		panel.add(btnDelete, gbc_btnDelete);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
